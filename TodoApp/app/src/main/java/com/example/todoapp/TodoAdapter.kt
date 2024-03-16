@@ -1,5 +1,6 @@
 package com.example.todoapp
 
+import android.annotation.SuppressLint
 import android.graphics.Paint.STRIKE_THRU_TEXT_FLAG
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 class TodoAdapter(
     private val todos : MutableList<Todo>
 ) : RecyclerView.Adapter<TodoAdapter.TodoViewHolder>() {
-    class TodoViewHolder(itermView : View) : RecyclerView.ViewHolder(itermView)
+    class TodoViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder {
         return TodoViewHolder(
@@ -29,6 +30,7 @@ class TodoAdapter(
         notifyItemInserted(todos.size -1)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun deleteDoneTodos(){
         todos.removeAll {todo->
             todo.isChechked
